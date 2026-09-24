@@ -1,6 +1,5 @@
-# 含真实密钥的测试用例，仅本地保留，不入库
-tests/test_blocker.py
-
 # ai-review 生成产物，由工具重新生成，不入库
 review-report.md
 .ai-review-reports/
+
+.agents/
