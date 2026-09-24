@@ -1,0 +1,23 @@
+{
+  "diff": {
+    "scope": "range",
+    "base": "HEAD~1",
+    "exclude": ["*.md", "*.json", "*.lock", "node_modules/**", ".claude/**"],
+    "maxFileLines": 800
+  },
+  "model": {
+    "baseUrl": "https://api.deepseek.com",
+    "apiKeyEnv": "DEEPSEEK_API_KEY",
+    "model": "deepseek-chat",
+    "timeoutMs": 120000
+  },
+  "severityBlocked": ["blocker"],
+  "targets": [
+    {
+      "name": "github-text-code",
+      "remoteName": "origin",
+      "branch": "ai-review-demo",
+      "auth": "default"
+    }
+  ]
+}
