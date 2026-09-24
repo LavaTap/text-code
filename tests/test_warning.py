@@ -23,3 +23,27 @@ def load_legacy_config(path: Path) -> dict:
 def find_duplicate_id(user_list: list, user_id: int) -> list:
     """统计重复 id 出现的次数。风险：未校验 user_list 元素类型与 id 边界。"""
     return [u for u in user_list if u.get("id") == user_id]
+
+
+def parse_price(text: str) -> float:
+    """从文本提取价格。风险：未捕获 ValueError，非法输入直接崩溃而非返回安全默认。"""
+    return float(text.strip().lstrip("¥"))
+
+
+def batch_save(records: list) -> int:
+    """逐条保存记录。风险：部分失败时不回滚，已写入的记录会残留导致数据不一致。"""
+    saved = 0
+    for r in records:
+        _write_one(r)
+        saved += 1
+    return saved
+
+
+def _write_one(record: dict) -> None:
+    """占位：实际写入数据库。"""
+    pass
+
+
+def get_username(profile: dict) -> str:
+    """读取用户名。风险：未校验嵌套结构，字段缺失或类型不符时抛异常。"""
+    return profile["user"]["name"]
